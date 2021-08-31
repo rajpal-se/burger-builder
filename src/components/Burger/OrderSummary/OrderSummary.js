@@ -7,6 +7,8 @@ const OrderSummary = props => {
         return <li key={igKey}><span style={{textTransform: 'caplitalize'}}>{igKey}</span>: {props.ingredients[igKey]}</li>;
     });
     
+    // console.log("[OrderSummary.js] Order Summary is Rendered.");
+
     return (
         <>
             <h3>Your Order</h3>
