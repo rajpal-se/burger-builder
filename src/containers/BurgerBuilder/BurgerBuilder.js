@@ -100,6 +100,22 @@ class BurgerBuilder extends Component{
     }
     purchaseContinueHandler = () => {
         // alert('You Continue!');
+        
+        // this.props.history.push('/checkout');
+
+        let queryParams = [];
+        for (const i in this.state.ingredients) {
+            queryParams.push( encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]) );
+        }
+        queryParams.push('price=' + this.state.totalPrice);
+
+        this.props.history.push({
+            pathname: '/checkout',
+            search: '?' + queryParams.join('&')
+        });
+        
+        /*  This code is moved to [ContactData.js]
+
         this.setState({loading: true});
         
         let order = {
@@ -116,6 +132,7 @@ class BurgerBuilder extends Component{
                 // console.log(error);
                 this.setState({loading: false, purchasing: false});
             } );
+        */
     }
 
     render(){
