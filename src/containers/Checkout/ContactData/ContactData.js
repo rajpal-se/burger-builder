@@ -6,12 +6,6 @@ import Spinner from '../../../components/UI/Spinner/Spinner';
 
 class ContactData extends Component{
     state = {
-        name: '',
-        email: '',
-        address: {
-            street: '',
-            postalCode: ''
-        },
         loading: false
     }
 
@@ -21,6 +15,7 @@ class ContactData extends Component{
         this.setState({loading: true});
         
         let order = {
+            ingredients: this.props.ingredients, 
             price: this.props.price,
             customer: {
                 name: "Test",
@@ -30,7 +25,8 @@ class ContactData extends Component{
                     zipCode: "655678",
                     country: "UK"
                 }
-            }
+            },
+            deliveryMethod: 'fastest'
         }
         axios.post('orders.json', order)
         .then( response => {
